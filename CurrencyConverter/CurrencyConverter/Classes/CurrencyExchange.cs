@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
 using System.Net.Http;
@@ -41,20 +40,12 @@ namespace CurrencyConverter
         {
 
             double[]? convertedValues = new double[Lines.Length - 2];
-            try
+            double exchangeRate = await GetExchangeRate();
+            for (int i = 2; i < Lines.Length; i++)
             {
-                double exchangeRate = await GetExchangeRate();
-                for (int i = 2; i < Lines.Length; i++)
-                {
-                    convertedValues[i - 2] = Convert.ToDouble(Lines[i]) * exchangeRate;
-                }
-                return convertedValues;
+                convertedValues[i - 2] = Convert.ToDouble(Lines[i]) * exchangeRate;
             }
-            catch (JsonReaderException ex)
-            {
-                UIService.PrintExceptionMessage(ex);
-            }
-            return null;
+            return convertedValues;
         }
 #nullable disable
     }

@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using Newtonsoft.Json;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace CurrencyConverter
@@ -16,6 +17,10 @@ namespace CurrencyConverter
                 UIService.PrintExchangeResults(currencyResults);
             }
             catch (HttpRequestException ex)
+            {
+                UIService.PrintExceptionMessage(ex);
+            }
+            catch (JsonReaderException ex)
             {
                 UIService.PrintExceptionMessage(ex);
             }
