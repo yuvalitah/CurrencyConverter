@@ -1,5 +1,5 @@
 # CurrencyConverter
-C# Console Application for converting cifferent currencies.
+C# Console Application for converting different currencies.
 
 Input:
   Text file location that has in his two first lines the coins you wish to convert and in the rest of the lines the amount of coins.
