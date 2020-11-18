@@ -10,11 +10,14 @@ namespace CurrencyConverter
             return Console.ReadLine();
         }
 
-        public void PrintExchangeResults(double[] results)
+        public void PrintExchangeResults(double[]? results)
         {
-            foreach (double result in results)
+            if (results != null)
             {
-                Console.WriteLine(result);
+                foreach (double result in results)
+                {
+                    Console.WriteLine(result);
+                }
             }
         }
 

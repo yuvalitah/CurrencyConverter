@@ -6,8 +6,7 @@ namespace CurrencyConverter
     {
         IUIService UIService { get; }
         string[] Lines { get; }
-        public string[] GetAllLinesFromFile();
-        public Task<double> GetExchangeRate();
-        public Task<double[]?> CalculateCurrencyConvertion();
+        Task<double> GetExchangeRateAsync();
+        Task<double[]?> CalculateCurrencyConvertionAsync();
     }
 }

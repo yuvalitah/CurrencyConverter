@@ -14,7 +14,7 @@ namespace CurrencyConverterTests
             double[] expected = new double[] { 6.8169, 10.22535, 13.6338 };
             IUIService UIService = new ConsoleUI();
             ICurrencyExchange currencyExchange = new CurrencyExchange(UIService, filePathInput);
-            double[] actual = await currencyExchange.CalculateCurrencyConvertion();
+            double[] actual = await currencyExchange.CalculateCurrencyConvertionAsync();
             CollectionAssert.AreEqual(expected, actual);
         }
     }

@@ -4,8 +4,8 @@ namespace CurrencyConverter
 {
     public interface IUIService
     {
-        public string GetFilePathFromUser();
-        public void PrintExchangeResults(double[] results);
-        public void PrintExceptionMessage(Exception ex);
+        string GetFilePathFromUser();
+        void PrintExchangeResults(double[]? results);
+        void PrintExceptionMessage(Exception ex);
     }
 }

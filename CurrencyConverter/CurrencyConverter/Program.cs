@@ -13,7 +13,7 @@ namespace CurrencyConverter
             ICurrencyExchange currencyExchange = new CurrencyExchange(UIService, filePath);
             try
             {
-                double[] currencyResults = await currencyExchange.CalculateCurrencyConvertion();
+                double[]? currencyResults = await currencyExchange.CalculateCurrencyConvertionAsync();
                 UIService.PrintExchangeResults(currencyResults);
             }
             catch (HttpRequestException ex)

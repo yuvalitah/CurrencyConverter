@@ -23,11 +23,10 @@ namespace CurrencyConverter
             return File.ReadAllLines(FilePath);
         }
 
-        public async Task<double> GetExchangeRate()
+        public async Task<double> GetExchangeRateAsync()
         {
             string currencies = $"{Lines[0].ToUpper()}_{Lines[1].ToUpper()}";
             string ApiAddress = $"https://free.currconv.com/api/v7/convert?q={currencies}&compact=ultra&apiKey=a1d13fa9f3dde093ff64";
-
             HttpClient client = new HttpClient();
             HttpResponseMessage response = await client.GetAsync(ApiAddress);
             JObject result = JObject.Parse(await response.Content.ReadAsStringAsync());
@@ -35,18 +34,15 @@ namespace CurrencyConverter
             return exchangeRate;
         }
 
-#nullable enable
-        public async Task<double[]?> CalculateCurrencyConvertion()
+        public async Task<double[]?> CalculateCurrencyConvertionAsync()
         {
-
             double[]? convertedValues = new double[Lines.Length - 2];
-            double exchangeRate = await GetExchangeRate();
+            double exchangeRate = await GetExchangeRateAsync();
             for (int i = 2; i < Lines.Length; i++)
             {
                 convertedValues[i - 2] = Convert.ToDouble(Lines[i]) * exchangeRate;
             }
             return convertedValues;
         }
-#nullable disable
     }
 }
